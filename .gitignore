@@ -1,1 +1,5 @@
 /.idea/
+/mb-common/target/
+/service-receiver/target/
+/service-sender/target/
+/.idea/libraries/**/

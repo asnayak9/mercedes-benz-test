@@ -40,25 +40,6 @@ public class RSAEncryptionServiceImpl implements EncryptionService {
         this.dCipher = Cipher.getInstance(algorithm);
     }
 
-    public void saveKeyPair(String path, KeyPair keyPair) throws IOException {
-        PrivateKey privateKey = keyPair.getPrivate();
-        PublicKey publicKey = keyPair.getPublic();
-
-        // Store Public Key.
-        X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(
-                publicKey.getEncoded());
-        FileOutputStream fos = new FileOutputStream(path + "/public.key");
-        fos.write(x509EncodedKeySpec.getEncoded());
-        fos.close();
-
-        // Store Private Key.
-        PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(
-                privateKey.getEncoded());
-        fos = new FileOutputStream(path + "/private.key");
-        fos.write(pkcs8EncodedKeySpec.getEncoded());
-        fos.close();
-    }
-
     @Override
     public String encrypt(String message) throws EncryptionException {
         try {
